@@ -1,13 +1,21 @@
+#This is currently quite specific for IOMeter generated csv, not very general-purse.
 def parseFile(filepath, interestingFields):
     fd = open(filepath)
+    getNameNow = False
     for line in fd:
+        if getNameNow:
+            getNameNow = False
+            accessSpec = line.split(',')[0]
         if line.startswith('\'Target Type'):
             fieldNameArray = line.split(',')
-        if line.startswith('ALL'):
+        elif line.startswith('ALL'):
             valuesAll = line.split(',')
+        elif line.startswith('\'Access specification name'):
+            getNameNow = True
     fd.close()
 
     fieldValues = {}
+    #fieldValues['Acess Spec'] = accessSpec
     for field in interestingFields:
         pos = fieldNameArray.index(field)
         fieldValues[field] = valuesAll[pos]
@@ -38,7 +46,7 @@ def cmpGenerator(delimiter1, delimiter2):
     return mycmp
 
 if __name__ == '__main__':
-    valueAll = parseFolder('C:\\aaa\\ftp\\1VCPU', [
+    valueAll = parseFolder('C:\\aaa\\ftp\\4VCPU', [
         'IOps',
         'Average Response Time'
     ])
