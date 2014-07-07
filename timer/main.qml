@@ -1,6 +1,5 @@
 import QtQuick 2.2
 import QtQuick.Window 2.1
-import QtQuick.Dialogs 1.2
 import QtQuick.Controls 1.2
 import QtMultimedia 5.0
 
@@ -69,7 +68,7 @@ Window {
             id: soundPlayer
             source: "alarm.wav"
             loops: 3
-        }
+    }
 
     Rectangle{
         width: parent.width
