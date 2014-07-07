@@ -49,6 +49,7 @@ Window {
                 controlButtonBackground.color = "grey"
                 notifier.visible = true
                 nTimer.start()
+                console.log("start soundPlayer")
                 soundPlayer.play()
             }
             var sec = countDown % 60
@@ -64,7 +65,7 @@ Window {
         }
     }
 
-    SoundEffect {
+    MediaPlayer {
             id: soundPlayer
             source: "alarm.wav"
             loops: 3
