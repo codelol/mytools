@@ -1,1 +1,0 @@
-This is a "count-down" timer developed using Qt.
